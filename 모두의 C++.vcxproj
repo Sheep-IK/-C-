@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="240305.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animal.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
