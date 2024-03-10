@@ -14,5 +14,7 @@ int main() {
 	change_val(soon_change);
 	std::cout << soon_change << std::endl;
 
+	soon_change = 15;
+
 	return 0;
 }
