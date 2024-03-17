@@ -108,8 +108,9 @@ int main() {
 		date.AddDay(add_num);
 
 		date.ShowDate();
+		std::cout << std::endl;
 	}
 
 
-
+	// 달력 만들기~ (완성)
 }
