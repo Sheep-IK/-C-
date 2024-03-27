@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <string.h>
 
 class soldier {
 	
@@ -7,10 +9,12 @@ class soldier {
 	int atk;								//공격력
 	int def;								//방어력
 	bool alive;							//생존여부
+	char* name;
 
 	public:
 		soldier();
 		soldier(int x, int y);
+		soldier(int x, int y, const char* soldier_name);
 
 		int attack();																//데미지를 리턴
 		void be_attacked(int damage_earn);					//받는 데미지를 리턴
@@ -24,10 +28,13 @@ soldier::soldier() {
 	atk = 10;
 	def = 0;
 	alive = true;
-
+	name = NULL;
 }
 
-soldier::soldier(int x, int y) {
+soldier::soldier(int x, int y, const char* solider_name) {
+	name = new char[strlen(solider_name) + 1];
+	strcpy(name, solider_name);
+
 	coord_x = x; 
 	coord_y = y; 
 	hp = 50;
@@ -52,16 +59,21 @@ void soldier ::show_status() {
 
 
 int main() {
-	soldier Soldier1(2, 5);
-	soldier Soldier2(3, 4);
+	soldier* Soldier[100];
 
-	Soldier1.show_status();
-	Soldier2.show_status();
+	Soldier[0] = new soldier(2, 5, "Soldier1");
+	Soldier[1] = new soldier(3, 4, "Soldier2");
 
+	Soldier[0]->show_status();
+	Soldier[1]->show_status();
+	
 	std::cout << std::endl << "※'Soldier1' attacked 'Soldier2'!!※" << std::endl << std::endl;
-	Soldier2.be_attacked(Soldier1.attack());
+	Soldier[1]->be_attacked(Soldier[0]->attack());
 
-	Soldier1.show_status();
-	Soldier2.show_status();
+	Soldier[0]->show_status();
+	Soldier[1]->show_status();
+
+	delete	 Soldier[0];
+	delete	 Soldier[1];
 
 }
